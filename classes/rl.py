@@ -356,8 +356,8 @@ class RL():
                         sending_data = {
                             "agent_id": agt,
                             "action": {
-                                "d_pitch": a[0].item() * 30,
-                                "d_roll": a[1].item() * 60
+                                "d_pitch": a[0].item() * 90,
+                                "d_roll": a[1].item() * 180
                             },
                             "delta_time": self.time_increment
                         }
