@@ -1,0 +1,8 @@
+# Pycache folders
+__pycache__/
+
+# Model files
+*.pth
+
+# Plot files
+*.png
