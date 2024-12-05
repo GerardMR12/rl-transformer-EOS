@@ -454,7 +454,7 @@ class RL():
 
                 # Target value for each loss
                 with torch.no_grad():
-                    target_v = r
+                    target_v = torch.FloatTensor(r)
 
                 # Set the gradients to zero
                 optimizer_v.zero_grad()
@@ -509,16 +509,16 @@ class RL():
         """
         Plot the losses.
         """
-        fig, ax = plt.subplots(1, 2, figsize=(10, 10))
+        fig, ax = plt.subplots(2, 1, figsize=(10, 10))
 
         smoothed_v = pd.DataFrame(losses["v"]).rolling(window=int(len(losses["v"])/10)).mean()
         smoothed_pi = pd.DataFrame(losses["pi"]).rolling(window=int(len(losses["pi"])/10)).mean()
 
-        ax[0, 0].plot(smoothed_v)
-        ax[0, 0].set_title("V-network loss")
+        ax[0].plot(smoothed_v)
+        ax[0].set_title("V-network loss")
 
-        ax[0, 1].plot(smoothed_pi)
-        ax[0, 1].set_title("Policy loss")
+        ax[1].plot(smoothed_pi)
+        ax[1].set_title("Policy loss")
 
         plt.savefig(f"{self.save_path}\\losses.png", dpi=500)
     
